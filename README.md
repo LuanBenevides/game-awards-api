@@ -1,4 +1,4 @@
-# Game-aweards-api
+# Game-awards-api
 
 ### Technologies used:
 
