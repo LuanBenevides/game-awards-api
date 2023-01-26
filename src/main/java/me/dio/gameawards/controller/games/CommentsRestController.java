@@ -14,42 +14,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.dio.gameawards.controller.BaseRestController;
-import me.dio.gameawards.domain.model.Game;
-import me.dio.gameawards.service.GameService;
+import me.dio.gameawards.domain.model.Comment;
+import me.dio.gameawards.service.CommentService;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class GameRestController extends BaseRestController{
+public class CommentsRestController extends BaseRestController{
 
 	@Autowired
-	private GameService businessLayer;
+	private CommentService businessLayer;
 	
-	@GetMapping("games")
-	public ResponseEntity<List<Game>> findAll(){
-		List<Game> games = businessLayer.findAll();
-		return ResponseEntity.ok(games);
+	@GetMapping("comments")
+	public ResponseEntity<List<Comment>> findAll(){
+		List<Comment> comments = businessLayer.findAll();
+		return ResponseEntity.ok(comments);
 	}
 	
-	@GetMapping("games/{id}")
-	public ResponseEntity<Game> findById(@PathVariable Long id){
+	@GetMapping("comments/{id}")
+	public ResponseEntity<Comment> findById(@PathVariable Long id){
 		return ResponseEntity.ok(businessLayer.findById(id));
 	}
 	
-	@PostMapping("games")
-	public ResponseEntity<Game> insert(@RequestBody Game game){
-		businessLayer.insert(game);
+	@PostMapping("comments")
+	public ResponseEntity<Comment> insert(@RequestBody Comment comment){
+		businessLayer.insert(comment);
 		
-		return ResponseEntity.ok(game);
+		return ResponseEntity.ok(comment);
 	}
 	
-	@PutMapping("games/{id}")
-	public ResponseEntity<Game> insert(@PathVariable Long id ,@RequestBody Game game){
-		businessLayer.update(id, game);
-		return ResponseEntity.ok(game);
+	@PutMapping("comments/{id}")
+	public ResponseEntity<Comment> insert(@PathVariable Long id ,@RequestBody Comment comment){
+		businessLayer.update(id, comment);
+		return ResponseEntity.ok(comment);
 	}
 	
-	@DeleteMapping("games/{id}")
-	public ResponseEntity<Game> delete(@PathVariable Long id){
+	@DeleteMapping("comments/{id}")
+	public ResponseEntity<Comment> delete(@PathVariable Long id){
 		businessLayer.delete(id);
 		return ResponseEntity.ok().build();
 	}

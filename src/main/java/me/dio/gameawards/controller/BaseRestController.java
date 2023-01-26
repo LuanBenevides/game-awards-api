@@ -1,6 +1,7 @@
 package me.dio.gameawards.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,6 +9,7 @@ import me.dio.gameawards.service.exception.BusinessException;
 import me.dio.gameawards.service.exception.NoContentException;
 
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public abstract class BaseRestController {
 
 	@ExceptionHandler(NoContentException.class)

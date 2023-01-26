@@ -14,42 +14,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.dio.gameawards.controller.BaseRestController;
-import me.dio.gameawards.domain.model.Game;
-import me.dio.gameawards.service.GameService;
+import me.dio.gameawards.domain.model.User;
+import me.dio.gameawards.service.UserService;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class GameRestController extends BaseRestController{
+public class UserRestController extends BaseRestController{
 
 	@Autowired
-	private GameService businessLayer;
+	private UserService businessLayer;
 	
-	@GetMapping("games")
-	public ResponseEntity<List<Game>> findAll(){
-		List<Game> games = businessLayer.findAll();
-		return ResponseEntity.ok(games);
+	@GetMapping("users")
+	public ResponseEntity<List<User>> findAll(){
+		List<User> users = businessLayer.findAll();
+		return ResponseEntity.ok(users);
 	}
 	
-	@GetMapping("games/{id}")
-	public ResponseEntity<Game> findById(@PathVariable Long id){
+	@GetMapping("users/{id}")
+	public ResponseEntity<User> findById(@PathVariable Long id){
 		return ResponseEntity.ok(businessLayer.findById(id));
 	}
 	
-	@PostMapping("games")
-	public ResponseEntity<Game> insert(@RequestBody Game game){
-		businessLayer.insert(game);
+	@PostMapping("users")
+	public ResponseEntity<User> insert(@RequestBody User user){
+		businessLayer.insert(user);
 		
-		return ResponseEntity.ok(game);
+		return ResponseEntity.ok(user);
 	}
 	
-	@PutMapping("games/{id}")
-	public ResponseEntity<Game> insert(@PathVariable Long id ,@RequestBody Game game){
-		businessLayer.update(id, game);
-		return ResponseEntity.ok(game);
+	@PutMapping("users/{id}")
+	public ResponseEntity<User> insert(@PathVariable Long id ,@RequestBody User user){
+		businessLayer.update(id, user);
+		return ResponseEntity.ok(user);
 	}
 	
-	@DeleteMapping("games/{id}")
-	public ResponseEntity<Game> delete(@PathVariable Long id){
+	@DeleteMapping("users/{id}")
+	public ResponseEntity<User> insert(@PathVariable Long id){
 		businessLayer.delete(id);
 		return ResponseEntity.ok().build();
 	}
